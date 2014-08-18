@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>Vmware - </title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Tools">Tools</a>&nbsp;»&nbsp;Vmware</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">Vmware</div>
+  <div id="content">
+  <h2 id="_1">文档</h2>
+<ul>
+<li><a href="http://pubs.vmware.com/workstation-10/index.jsp">中文文档 http://pubs.vmware.com/workstation-10/index.jsp</a></li>
+</ul>
+<h2 id="_2">文件夹共享相关</h2>
+<div class="hlcode"><pre><span class="c">#共享路径</span>
+/mnt/hgfs
+
+<span class="c">#将所有共享装载到 /home/user1/shares</span>
+mount -t vmhgfs .host:/ /home/user1/shares
+
+<span class="c">#将名为 foo 的共享装载到 /tmp/foo</span>
+mount -t vmhgfs .host:/foo /tmp/foo
+
+<span class="c">#将共享 foo 中的子目录 bar 装载到 /var/lib/bar</span>
+mount -t vmhgfs .host:/foo/bar /var/lib/bar
+</pre></div>
+
+
+<p>问题排查：
+查看是否加载模块：
+<a href="http://www.howtogeek.com/howto/ubuntu/how-to-share-folders-with-your-ubuntu-virtual-machine-guest/">http://www.howtogeek.com/howto/ubuntu/how-to-share-folders-with-your-ubuntu-virtual-machine-guest/</a></p>
+<div class="hlcode"><pre><span class="n">lsmod</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">vmhgfs</span>
+</pre></div>
+
+
+<p>加载模块：</p>
+<div class="hlcode"><pre><span class="n">modprobe</span> <span class="n">vmhgfs</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 .
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>
