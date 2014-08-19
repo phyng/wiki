@@ -1,4 +1,4 @@
-/*  
+/*
 Theme Name: Simple
 Author: Tanky Woo<me@tankywoo.com>
 Author URI: http://www.wutianqi.com/
@@ -20,9 +20,12 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
     line-height: 1.5em;
+    /*
     background-color: whitesmoke;
+    */
+
 }
 
 a { color: #0645ad; text-decoration: none; }
@@ -89,8 +92,8 @@ td {
 }
 
 /* Optimization for pre and code tag */
-pre, code { 
-    font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", Monaco, Andale Mono, "MS Gothic", monospace;
+pre, code {
+    font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", Monaco, Andale Mono, monospace;
     font-size: 13px;
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -105,7 +108,7 @@ code {
     padding: 1px 3px;
 }
 
-pre { 
+pre {
     border: 1px solid #eee;
     padding: 8px 12px;
     white-space: pre;
@@ -130,10 +133,12 @@ pre code {
     line-height: 1.5em;
     margin: 1.5em auto 3em auto;
     padding: 1.5em 2em;
+    /*
     border: 1px solid #ccc;
     box-shadow: 2px 2px 8px #aaa;
     -webkit-box-shadow: 2px 2px 8px #aaa;
     -moz-box-shadow: 2px 2px 8px #aaa;
+    */
 }
 
 #wiki_title, #title {
