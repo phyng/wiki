@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="/w.png">
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>chardet - Phyng's Wiki</title>
+        <meta name="keywords" content="Python"/>
+        <meta name="description" content="Phyng's Wiki, Focus on Python Web Development."/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Python-Lib">Python-Lib</a>&nbsp;»&nbsp;chardet</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">chardet</div>
+  <div id="content">
+  <h2 id="docs">Docs</h2>
+<ul>
+<li><a href="https://github.com/chardet/chardet">https://github.com/chardet/chardet</a></li>
+</ul>
+<h2 id="usages">Usages</h2>
+<div class="hlcode"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Usage</span>
+
+<span class="sd">[link] Basic usage</span>
+
+<span class="sd">The easiest way to use the Universal Encoding Detector library is with the detect function.</span>
+
+<span class="sd">[link]</span>
+<span class="sd">Example: Using the detect function</span>
+
+<span class="sd">The detect function takes one argument, a non-Unicode string. It returns a dictionary containing the auto-detected character encoding and a confidence level from 0 to 1.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">urllib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">rawdata</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://yahoo.co.jp/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">chardet</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">rawdata</span><span class="p">)</span>
+<span class="p">{</span><span class="s">&#39;encoding&#39;</span><span class="p">:</span> <span class="s">&#39;EUC-JP&#39;</span><span class="p">,</span> <span class="s">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">[link] Advanced usage</span>
+
+<span class="sd">If you’re dealing with a large amount of text, you can call the Universal Encoding Detector library incrementally, and it will stop as soon as it is confident enough to report its results.</span>
+
+<span class="sd">Create a UniversalDetector object, then call its feed method repeatedly with each block of text. If the detector reaches a minimum threshold of confidence, it will set detector.done to True.</span>
+
+<span class="sd">Once you’ve exhausted the source text, call detector.close(), which will do some final calculations in case the detector didn’t hit its minimum confidence threshold earlier. Then detector.result will be a dictionary containing the auto-detected character encoding and confidence level (the same as the chardet.detect function returns).</span>
+
+<span class="sd">[link]</span>
+<span class="sd">Example: Detecting encoding incrementally</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">chardet.universaldetector</span> <span class="kn">import</span> <span class="n">UniversalDetector</span>
+
+<span class="n">usock</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://yahoo.co.jp/&#39;</span><span class="p">)</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">UniversalDetector</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">usock</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+    <span class="n">detector</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">detector</span><span class="o">.</span><span class="n">done</span><span class="p">:</span> <span class="k">break</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">usock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">detector</span><span class="o">.</span><span class="n">result</span>
+<span class="p">{</span><span class="s">&#39;encoding&#39;</span><span class="p">:</span> <span class="s">&#39;EUC-JP&#39;</span><span class="p">,</span> <span class="s">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">If you want to detect the encoding of multiple texts (such as separate files), you can re-use a single UniversalDetector object. Just call detector.reset() at the start of each file, call detector.feed as many times as you like, and then call detector.close() and check the detector.result dictionary for the file’s results.</span>
+
+<span class="sd">[link]</span>
+<span class="sd">Example: Detecting encodings of multiple files</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">chardet.universaldetector</span> <span class="kn">import</span> <span class="n">UniversalDetector</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">UniversalDetector</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.xml&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">filename</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>
+    <span class="n">detector</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">):</span>
+        <span class="n">detector</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">detector</span><span class="o">.</span><span class="n">done</span><span class="p">:</span> <span class="k">break</span>
+    <span class="n">detector</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">detector</span><span class="o">.</span><span class="n">result</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © Phyng.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

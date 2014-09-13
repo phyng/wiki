@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="/w.png">
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>lxml - Phyng's Wiki</title>
+        <meta name="keywords" content="Python"/>
+        <meta name="description" content="Phyng's Wiki, Focus on Python Web Development."/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Python-Lib">Python-Lib</a>&nbsp;»&nbsp;lxml</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">lxml</div>
+  <div id="content">
+  <div class="hlcode"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">api4</span> <span class="o">=</span> <span class="s">&#39;http://data.stats.gov.cn/workspace/expindex&#39;</span>
+<span class="c">#code来自API3</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;code&#39;</span><span class="p">:</span><span class="s">&#39;A01010101&#39;</span><span class="p">,</span> <span class="s">&#39;dbcode&#39;</span><span class="p">:</span><span class="s">&#39;hgyd&#39;</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">api4</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//*[@id=&quot;tip&quot;]/text()&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © Phyng.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="/w.png">
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>pull reauests - Phyng's Wiki</title>
+        <meta name="keywords" content="Python"/>
+        <meta name="description" content="Phyng's Wiki, Focus on Python Web Development."/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/#Git">Git</a>&nbsp;»&nbsp;pull reauests</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">pull reauests</div>
+  <div id="content">
+  <div class="hlcode"><pre>C:\phyng<span class="p">&gt;</span><span class="n">git</span> clone https:<span class="n">//github.com/phyng/map.git</span>
+Cloning into <span class="s1">&#39;map&#39;</span>...
+remote: Counting objects: <span class="m">47</span><span class="p">,</span> done.
+remote: Total <span class="m">47</span> (delta <span class="m">0</span>)<span class="p">,</span> reused <span class="m">0</span> (delta <span class="m">0</span>)
+Unpacking objects: <span class="m">100</span>% (<span class="m">47</span><span class="n">/47),</span> done.
+Checking connectivity... done.
+
+C:\phyng<span class="p">&gt;</span><span class="n">cd</span> map
+
+C:\phyng\map<span class="p">&gt;</span><span class="n">git</span> branch delete_image
+
+C:\phyng\map<span class="p">&gt;</span><span class="n">git</span> checkout delete_image
+Switched to branch <span class="s1">&#39;delete_image&#39;</span>
+
+C:\phyng\map<span class="p">&gt;</span><span class="n">git</span> add --all
+
+C:\phyng\map<span class="p">&gt;</span><span class="n">git</span> commit -m <span class="s2">&quot;delete image&quot;</span>
+[delete_image a<span class="m">26</span>af<span class="m">5</span>c] delete image
+ <span class="m">2</span> files changed<span class="p">,</span> <span class="m">2</span> deletions(-)
+ delete mode <span class="m">100644</span> zoning-code<span class="n">/demo.png</span>
+
+C:\phyng\map<span class="p">&gt;</span><span class="n">git</span> push origin delete_image
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: phyng
+Password <span class="k">for</span> <span class="s1">&#39;https://phyng@github.com&#39;</span>:
+Counting objects: <span class="m">7</span><span class="p">,</span> done.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% (<span class="m">4</span><span class="n">/4),</span> done.
+Writing objects: <span class="m">100</span>% (<span class="m">4</span><span class="n">/4),</span> <span class="m">371</span> bytes <span class="p">|</span> <span class="n">0</span> bytes<span class="n">/s,</span> done.
+Total <span class="m">4</span> (delta <span class="m">2</span>)<span class="p">,</span> reused <span class="m">0</span> (delta <span class="m">0</span>)
+To https:<span class="n">//github.com/phyng/map.git</span>
+ * [new branch]      delete_image -<span class="p">&gt;</span> <span class="n">delete_image</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © Phyng.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>
